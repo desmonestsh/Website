@@ -2,237 +2,193 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andrew Ganni — Software enthusiast, creator, and gamer</title>
-    <meta name="description" content="The personal website of Andrew Ganni — portfolio, photos, and web games." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Andrew Ganni – Coming Soon</title>
+    <meta name="description" content="Andrew-Ganni.com — a professional portfolio and personal website is on its way." />
+    <style>
+      :root {
+        --bg: #0b0c10;
+        --fg: #111217;
+        --text: #0f1222;
+        --muted: #4b5563;
+        --accent: #2563eb;
+        --card: #ffffff;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0c10;
+          --fg: #0f1117;
+          --text: #e5e7eb;
+          --muted: #9aa3b2;
+          --accent: #60a5fa;
+          --card: #111418;
+        }
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        height: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+        background:
+          radial-gradient(1200px 600px at 80% -10%, rgba(96, 165, 250, 0.15), transparent 60%),
+          radial-gradient(1000px 500px at -10% 110%, rgba(20, 184, 166, 0.10), transparent 60%),
+          linear-gradient(180deg, var(--fg), var(--bg));
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 4vh 5vw;
+      }
+
+      main {
+        width: min(720px, 100%);
+        background: var(--card);
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        padding: clamp(1.8rem, 4vw, 2.6rem);
+        display: grid;
+        gap: 1.4rem;
+        text-align: center;
+        animation: fadeIn 600ms ease-out both;
+      }
+
+      h1 {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      }
+
+      p.sub {
+        color: var(--muted);
+        font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+        line-height: 1.7;
+      }
+
+      .dots {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.25rem;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0.6;
+        animation: bounce 1.4s infinite ease-in-out;
+      }
+      .dot:nth-child(2) { animation-delay: 0.15s; }
+      .dot:nth-child(3) { animation-delay: 0.3s; }
+
+      form.notify {
+        margin-top: 0.6rem;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+      }
+      .input {
+        appearance: none;
+        width: 100%;
+        padding: 0.9rem 1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        background: #fff;
+        color: #111827;
+        font-size: 0.98rem;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .input::placeholder { color: #9ca3af; }
+      .input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+      }
+      .btn {
+        -webkit-appearance: none;
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.9rem 1.2rem;
+        border-radius: 12px;
+        background: var(--accent);
+        color: white;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        white-space: nowrap;
+      }
+      .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(37, 99, 235, 0.25); }
+      .btn:active { transform: translateY(0); box-shadow: none; }
+
+      footer {
+        margin-top: 0.2rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      footer a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      footer a:hover { color: var(--accent); text-decoration: underline; }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes bounce {
+        0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+        40% { transform: translateY(-6px); opacity: 1; }
+      }
+
+      @media (max-width: 520px) {
+        form.notify { grid-template-columns: 1fr; }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header">
-      <a class="logo" href="#home">AG</a>
-      <nav class="nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#pictures">Pictures</a>
-        <a href="#games">Games</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">☾</button>
-    </header>
-
-    <main id="home" class="hero">
-      <div class="hero-content">
-        <h1>Andrew Ganni</h1>
-        <p class="tagline">Software enthusiast, creator, and gamer</p>
-        <p class="intro">
-          I build useful and playful experiences on the web. Explore my work, browse some pictures, or take a break with quick games — all in one place.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#portfolio">View Portfolio</a>
-          <a class="btn" href="#games">Play Games</a>
-        </div>
+    <main>
+      <h1>Andrew Ganni – Coming Soon</h1>
+      <p class="sub">A professional portfolio and personal website is on its way.</p>
+      <div class="dots" aria-hidden="true">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
+      <form class="notify" onsubmit="notify(event)" aria-label="Get notified when we launch">
+        <input class="input" type="email" name="email" inputmode="email" autocomplete="email" placeholder="Your email address" aria-label="Email address" required />
+        <button class="btn" type="submit">Get notified</button>
+      </form>
+      <footer>
+        <span>© <span id="year"></span> Andrew-Ganni.com</span>
+        <a href="mailto:hello@andrew-ganni.com" aria-label="Email Andrew">Contact</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn (placeholder)">LinkedIn</a>
+      </footer>
     </main>
-
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About Me</h2>
-        <div class="about-grid">
-          <div>
-            <p>
-              I’m Andrew — I like turning ideas into simple, reliable products. My interests include web development, creative coding, and making small tools that feel great to use.
-            </p>
-            <p>
-              When I’m not coding, you’ll probably find me experimenting with UI concepts, taking photos, or chasing high scores in cozy games.
-            </p>
-            <div class="about-actions">
-              <a class="btn" href="#" download>Download Resume</a>
-            </div>
-          </div>
-          <div class="about-cards">
-            <article>
-              <h3>Education</h3>
-              <ul>
-                <li>University — Computer Science</li>
-                <li>Certifications — Web, JS, Cloud</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Experience</h3>
-              <ul>
-                <li>Full‑stack web projects</li>
-                <li>Client sites and dashboards</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Skills</h3>
-              <ul class="chips">
-                <li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Node</li><li>UI/UX</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Achievements</h3>
-              <ul>
-                <li>Shipped multiple web apps</li>
-                <li>Built reusable UI component kits</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="section alt">
-      <div class="container">
-        <h2>Portfolio</h2>
-        <div class="cards" id="projects">
-          <article class="card">
-            <h3>TaskFlow</h3>
-            <p>A minimalist task manager with keyboard‑first UX.</p>
-            <div class="chips small"><span>TypeScript</span><span>React</span><span>Vite</span></div>
-            <div class="actions">
-              <a class="btn small" href="#" target="_blank" rel="noopener">Live</a>
-              <a class="btn small" href="#" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="card">
-            <h3>SnapGallery</h3>
-            <p>Responsive photo grid with lightbox and lazy loading.</p>
-            <div class="chips small"><span>JS</span><span>CSS Grid</span></div>
-            <div class="actions">
-              <a class="btn small" href="#" target="_blank" rel="noopener">Live</a>
-              <a class="btn small" href="#" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-          <article class="card">
-            <h3>ScoreBits</h3>
-            <p>Retro‑styled mini games with shared high score state.</p>
-            <div class="chips small"><span>JS</span><span>Canvas</span></div>
-            <div class="actions">
-              <a class="btn small" href="#" target="_blank" rel="noopener">Live</a>
-              <a class="btn small" href="#" target="_blank" rel="noopener">Code</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="pictures" class="section">
-      <div class="container">
-        <h2>Pictures</h2>
-        <div class="gallery">
-          <figure>
-            <img src="" alt="Sunlit city street — replace with your photo" />
-            <figcaption>City strolls</figcaption>
-          </figure>
-          <figure>
-            <img src="" alt="Laptop and notes — replace with your photo" />
-            <figcaption>Build days</figcaption>
-          </figure>
-          <figure>
-            <img src="" alt="Nature greens — replace with your photo" />
-            <figcaption>Time off</figcaption>
-          </figure>
-          <figure>
-            <img src="" alt="Coffee and code — replace with your photo" />
-            <figcaption>Fuel up</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div id="lightbox" class="lightbox" hidden>
-        <button class="lightbox-close" aria-label="Close">×</button>
-        <img alt="Preview" />
-        <p class="lightbox-caption"></p>
-      </div>
-    </section>
-
-    <section id="games" class="section alt">
-      <div class="container">
-        <h2>Games</h2>
-        <div class="games-grid">
-          <article class="game" id="rps">
-            <h3>Rock‑Paper‑Scissors</h3>
-            <div class="rps-controls">
-              <button data-move="rock">Rock</button>
-              <button data-move="paper">Paper</button>
-              <button data-move="scissors">Scissors</button>
-            </div>
-            <p class="rps-status">Make a move!</p>
-          </article>
-
-          <article class="game" id="tictactoe">
-            <h3>Tic Tac Toe</h3>
-            <div class="board" role="grid" aria-label="Tic Tac Toe Board">
-              <button></button><button></button><button></button>
-              <button></button><button></button><button></button>
-              <button></button><button></button><button></button>
-            </div>
-            <div class="game-row">
-              <p class="ttt-status">Player X's turn</p>
-              <button class="btn small" id="tttReset">Reset</button>
-            </div>
-          </article>
-
-          <article class="game" id="hangman">
-            <h3>Hangman</h3>
-            <p class="hm-word">_ _ _ _ _</p>
-            <div class="hm-letters"></div>
-            <div class="game-row">
-              <p class="hm-status">6 lives</p>
-              <button class="btn small" id="hmReset">New Word</button>
-            </div>
-          </article>
-
-          <article class="game" id="quiz">
-            <h3>Quick Quiz</h3>
-            <div class="quiz-box">
-              <p class="q-text">Loading...</p>
-              <div class="q-options"></div>
-              <div class="game-row">
-                <button class="btn small" id="qNext">Next</button>
-                <p class="q-progress"></p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <footer id="contact" class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <h3>Get in touch</h3>
-          <p>Say hello or ask about a project.</p>
-          <a class="btn primary" href="mailto:hello@andrew-ganni.com">Email Andrew</a>
-        </div>
-        <div>
-          <h4>Links</h4>
-          <ul class="links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#pictures">Pictures</a></li>
-            <li><a href="#games">Games</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Social</h4>
-          <ul class="links">
-            <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">
-        © <span id="year"></span> Andrew Ganni. All rights reserved.
-      </div>
-    </footer>
-
-    <script src="./script.js"></script>
+    <script>
+      // Set dynamic year
+      document.getElementById('year').textContent = new Date().getFullYear();
+      // Lightweight mailto-based "notify" without external services
+      function notify(e) {
+        e.preventDefault();
+        var email = (new FormData(e.target)).get('email') || '';
+        var subject = encodeURIComponent('Notify me about Andrew-Ganni.com launch');
+        var body = encodeURIComponent('Please notify ' + email + ' when the site launches. Thanks!');
+        window.location.href = 'mailto:hello@andrew-ganni.com?subject=' + subject + '&body=' + body;
+      }
+    </script>
   </body>
 </html>
 
