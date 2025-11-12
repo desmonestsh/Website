@@ -3,16 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Coming Soon</title>
+    <title>Jawaad Gul | Design &amp; Technology Mischief Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         color-scheme: light dark;
-        --bg-primary: linear-gradient(135deg, #111827, #1f2937);
-        --bg-secondary: linear-gradient(135deg, #f3f4f6, #d1d5db);
-        --accent: #6366f1;
-        --text-light: #f9fafb;
-        --text-dark: #1f2937;
-        --shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+        --bg: #050816;
+        --card-bg: rgba(18, 24, 38, 0.85);
+        --accent: #ff6f61;
+        --accent-secondary: #60a5fa;
+        --text-primary: #f9fafb;
+        --text-secondary: #cbd5f5;
+        --shadow: 0 25px 55px rgba(4, 9, 24, 0.65);
+        --blur: blur(18px);
       }
 
       * {
@@ -22,137 +30,389 @@
       }
 
       body {
-        font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
         min-height: 100vh;
+        background: radial-gradient(circle at 15% 20%, rgba(96, 165, 250, 0.32), transparent 55%),
+          radial-gradient(circle at 85% 15%, rgba(251, 146, 60, 0.28), transparent 60%),
+          radial-gradient(circle at 20% 85%, rgba(192, 132, 252, 0.25), transparent 65%), var(--bg);
+        color: var(--text-primary);
+        font-family: "DM Sans", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--bg-primary);
-        color: var(--text-light);
-        transition: background 0.6s ease, color 0.6s ease;
+        padding: clamp(1.8rem, 5vw, 4rem);
+        position: relative;
+        overflow: hidden;
       }
 
-      @media (prefers-color-scheme: light) {
-        body {
-          background: var(--bg-secondary);
-          color: var(--text-dark);
-        }
+      body::before,
+      body::after {
+        content: "";
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.32;
+        z-index: 0;
+      }
+
+      body::before {
+        background: #60a5fa;
+        top: -140px;
+        left: -180px;
+      }
+
+      body::after {
+        background: #f97316;
+        bottom: -160px;
+        right: -220px;
       }
 
       main {
-        text-align: center;
-        padding: 3.5rem clamp(1.5rem, 4vw, 4rem);
-        border-radius: 28px;
-        background: rgba(17, 24, 39, 0.75);
-        backdrop-filter: blur(12px);
+        z-index: 1;
+        background: var(--card-bg);
+        backdrop-filter: var(--blur);
+        width: min(940px, 100%);
         box-shadow: var(--shadow);
-        max-width: min(520px, 90vw);
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
       }
 
-      @media (prefers-color-scheme: light) {
-        main {
-          background: rgba(255, 255, 255, 0.9);
-        }
+      header {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.4rem;
+        padding: clamp(2.8rem, 5vw, 3.6rem);
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(255, 111, 97, 0.12));
       }
 
-      h1 {
-        font-size: clamp(2.75rem, 5vw, 3.8rem);
+      .avatar-card {
+        background: rgba(5, 8, 22, 0.45);
+        border-radius: 24px;
+        padding: 2rem;
+        display: grid;
+        gap: 1.2rem;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        position: relative;
+      }
+
+      .avatar-card::after {
+        content: "DT Wizard";
+        position: absolute;
+        bottom: 1.6rem;
+        right: 1.6rem;
+        padding: 0.45rem 0.9rem;
+        background: rgba(96, 165, 250, 0.25);
+        border-radius: 999px;
+        font-size: 0.75rem;
         font-weight: 700;
-        letter-spacing: -0.04em;
-        margin-bottom: 1rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
       }
 
-      p {
-        font-size: clamp(1.05rem, 2.5vw, 1.2rem);
-        line-height: 1.7;
-        opacity: 0.85;
-        margin-bottom: 2.75rem;
+      .avatar {
+        width: 124px;
+        height: 124px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.75), rgba(96, 165, 250, 0.35));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #050816;
+        text-shadow: 0 12px 24px rgba(3, 7, 18, 0.35);
       }
 
-      .tag {
+      .basics {
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .basics h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(2.6rem, 6vw, 3.4rem);
+        letter-spacing: -0.03em;
+      }
+
+      .basics p {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      .tagline {
         display: inline-flex;
         align-items: center;
         gap: 0.6rem;
-        padding: 0.5rem 1.2rem;
+        background: rgba(255, 111, 97, 0.18);
         border-radius: 999px;
-        background: rgba(99, 102, 241, 0.15);
-        color: inherit;
-        font-weight: 600;
-        letter-spacing: 0.08em;
+        padding: 0.45rem 1.1rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        font-size: 0.75rem;
+        color: var(--text-secondary);
       }
 
-      @media (prefers-color-scheme: light) {
-        .tag {
-          background: rgba(99, 102, 241, 0.1);
-          color: var(--accent);
-        }
+      section {
+        padding: clamp(2.8rem, 5vw, 3.6rem);
+        display: grid;
+        gap: 2.4rem;
+      }
+
+      .bio {
+        display: grid;
+        gap: 1.4rem;
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: rgba(229, 231, 249, 0.92);
+      }
+
+      .bio p + p {
+        color: var(--text-secondary);
+      }
+
+      .achievements {
+        background: rgba(96, 165, 250, 0.08);
+        border-radius: 24px;
+        padding: 2.2rem;
+        border: 1px solid rgba(96, 165, 250, 0.18);
+      }
+
+      .achievements h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.6rem;
+        margin-bottom: 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .achievements h2 span {
+        display: inline-flex;
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 111, 97, 0.22);
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 1.1rem;
+      }
+
+      .achievements ul {
+        list-style: none;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .achievements li {
+        padding: 1rem 1.2rem;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: rgba(5, 8, 22, 0.45);
+        display: grid;
+        gap: 0.35rem;
+        position: relative;
+      }
+
+      .achievements li::before {
+        content: "★";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        font-size: 1.4rem;
+        color: rgba(255, 111, 97, 0.75);
+      }
+
+      .achievements li strong {
+        font-weight: 600;
+        color: #ffffff;
+      }
+
+      footer {
+        padding: 2.2rem clamp(2.6rem, 5vw, 3.4rem);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        font-size: 0.96rem;
+        color: rgba(203, 213, 225, 0.9);
       }
 
       .cta {
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        background: rgba(255, 111, 97, 0.9);
+        color: #050816;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.02em;
         display: inline-flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 0.85rem 1.65rem;
-        border-radius: 999px;
-        border: 1px solid rgba(249, 250, 251, 0.2);
-        text-decoration: none;
-        font-size: 0.95rem;
-        color: inherit;
-        background: rgba(249, 250, 251, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-      }
-
-      .cta span {
-        font-weight: 600;
+        gap: 0.65rem;
+        box-shadow: 0 18px 35px rgba(255, 111, 97, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .cta svg {
         width: 1.1rem;
         height: 1.1rem;
-        stroke-width: 2.25;
       }
 
       .cta:hover,
       .cta:focus-visible {
-        transform: translateY(-2px);
-        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
-        background: rgba(99, 102, 241, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 22px 42px rgba(255, 111, 97, 0.4);
       }
 
-      footer {
-        margin-top: 2.75rem;
-        font-size: 0.8rem;
-        opacity: 0.6;
+      @media (max-width: 720px) {
+        header {
+          grid-template-columns: 1fr;
+        }
+
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
       }
     </style>
   </head>
   <body>
     <main>
-      <div class="tag">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M9 3v4m6-4v4m-9 7h12M5 9h14l1 12H4L5 9z" />
-        </svg>
-        Portfolio Coming Soon
-      </div>
-      <h1>Crafting Something Special</h1>
-      <p>
-        I am building a portfolio space to showcase projects, stories, and ideas. Drop your email below and I will reach
-        out the moment it goes live.
-      </p>
-      <a class="cta" href="mailto:hello@example.com?subject=Portfolio%20Launch%20Notification">
-        <span>Notify Me</span>
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4-4 4M3 12h18" />
-        </svg>
-      </a>
-      <footer>© <span id="year"></span> Portfolio Launch in Progress.</footer>
+      <header>
+        <div class="avatar-card">
+          <div class="avatar">JG</div>
+          <div class="basics">
+            <span class="tagline">Design &amp; Technology Teacher</span>
+            <h1>Jawaad Gul</h1>
+            <p>
+              Tall, delightfully round, proudly bearded, bespectacled, and perpetually armed with a glue gun (safely,
+              mostly).
+            </p>
+            <p>
+              Currently corralling curious minds at Kings School Al Barsha and convincing 3D printers to behave with the
+              power of sarcasm.
+            </p>
+          </div>
+        </div>
+        <div class="bio">
+          <p>
+            Jawaad Gul has held court in the workshop long enough to know the difference between “design chaos” and
+            “actual fire hazard,” and he’ll happily give a TED Talk on both. After double-dipping at the University of
+            Nottingham and Nottingham Trent, he emerged with enough ideas to power a small amusement park (and yes, he’s
+            tried). His teaching superpower? Turning “Sir, is this supposed to bend?” into a teachable moment with a side
+            of sarcasm.
+          </p>
+          <p>
+            When he isn’t coaxing creativity out of timber and teenage angst, Jawaad flexes his decade-long mentoring
+            chops, courtesy of the Children’s Society, where he helped asylum seekers design futures bigger than their
+            fears. He moves through life like a friendly giant stocked with design hacks, questionable playlists, and
+            enough Nottingham pride to make Robin Hood jealous.
+          </p>
+          <p>
+            Need a prototype built overnight? Need coffee brewed strong enough to power the laser cutter? Need someone to
+            explain why duct tape is a love language? Jawaad’s your guy—provided you’re okay with a running commentary on
+            the comedy of classroom life.
+          </p>
+        </div>
+      </header>
+      <section>
+        <article class="about">
+          <h2><span>👋</span>About Me</h2>
+          <p>
+            Hi, I’m Jawaad — tall, fat, beard, glasses, and perpetually dusted with sawdust like a budget snow globe.
+            I wrangle Design &amp; Technology at Kings School Al Barsha where I teach, tinker, and occasionally negotiate
+            peace treaties between students and glue sticks.
+          </p>
+          <p>
+            I studied at the University of Nottingham and Nottingham Trent, because one Nottingham simply wasn’t enough.
+            I also spent 10 years mentoring with the Children’s Society, helping asylum-seeking young people sketch,
+            prototype, and build futures that actually fit them.
+          </p>
+        </article>
+
+        <article class="achievements">
+          <h2><span>!</span>Achievements (ish)</h2>
+          <ul>
+            <li>
+              <strong>Invented a chair that folds itself (kind of).</strong>
+              Directions include “encourage it gently” and “do not ask follow-up questions.”
+            </li>
+            <li>
+              <strong>Won first prize in the “Most Creative Beard Braid” competition.</strong>
+              Winning entry included LEDs, zip ties, and a small model trebuchet.
+            </li>
+            <li>
+              <strong>Mentored 200+ mini-designers into questionable but charming greatness.</strong>
+              Their parents thank him. Their storage cupboards do not.
+            </li>
+            <li>
+              <strong>Built a model rollercoaster that only works on Tuesdays.</strong>
+              Researchers are investigating the involvement of moon phases and lunchtime kebabs.
+            </li>
+            <li>
+              <strong>Survived 10 years of teaching without a single glue gun disaster… mostly.</strong>
+              We don’t talk about the Great Glitter Spill of Year 8.
+            </li>
+          </ul>
+        </article>
+
+        <article class="gallery">
+          <h2><span>📸</span>Photo Gallery / Fun Photos</h2>
+          <div class="grid">
+            <figure class="ph placeholder paint">
+              <figcaption>Me, “abstract expressionist” edition — after a DT project went slightly wrong.</figcaption>
+            </figure>
+            <figure class="ph placeholder bike">
+              <figcaption>Attempting to ride a self-made bicycle indoors. Health and safety blinked first.</figcaption>
+            </figure>
+            <figure class="ph placeholder cape">
+              <figcaption>Mentoring with a superhero cape. Because sometimes pedagogy needs dramatic flair.</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="facts">
+          <h2><span>🧰</span>Random Facts / Fun Corner</h2>
+          <ul>
+            <li><strong>Duct tape connoisseur:</strong> collecting every color like Pokémon, but stickier.</li>
+            <li><strong>Tea technique:</strong> drinks tea like a pro, sometimes stirring with a ruler.</li>
+            <li><strong>Hardware wizardry:</strong> can identify 50+ screw types on sight — party trick pending.</li>
+          </ul>
+        </article>
+
+        <article class="contact">
+          <h2><span>💬</span>Contact / Drop By</h2>
+          <p>
+            Drop by for design tips, dad jokes, or just to marvel at my impressive collection of duct tape creations.
+          </p>
+          <a class="cta" href="mailto:jawaad.gul@kingsalbarsha.edu?subject=Say%20Hi%20to%20Jawaad">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M21.75 4.5l-9 7.5-9-7.5m18 0v12.75a1.5 1.5 0 0 1-1.5 1.5h-15a1.5 1.5 0 0 1-1.5-1.5V4.5m18 0h-18" />
+            </svg>
+            Email Me
+          </a>
+        </article>
+      </section>
+      <footer>
+        <span>© <span id="year"></span> Jawaad Gul — Powered by tea and cable ties.</span>
+        <a class="cta" href="mailto:jawaad.gul@kingsalbarsha.edu?subject=Design%20Chat%20with%20Jawaad">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M21.75 4.5l-9 7.5-9-7.5m18 0v12.75a1.5 1.5 0 0 1-1.5 1.5h-15a1.5 1.5 0 0 1-1.5-1.5V4.5m18 0h-18" />
+          </svg>
+          Say Hi
+        </a>
+      </footer>
     </main>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
-
 
