@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew Ganni — Entrepreneur. Creator. Innovator.</title>
+  <meta name="description" content="Personal website of Andrew Ganni — entrepreneur, creator, and innovator." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-light: #6b6b6b;
+      --accent: #d4a574;
+      --accent-light: #e8c9a3;
+      --border: #e5e5e5;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1.5rem 5%;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 1rem 5%;
+      box-shadow: 0 2px 20px var(--shadow);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 5% 4rem;
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.03) 0%, rgba(255, 255, 255, 1) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--text-light);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: all 0.3s ease;
+      border: 2px solid var(--text);
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .hero-image {
+      animation: fadeInRight 0.8s ease-out 0.2s both;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px var(--shadow);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4rem;
+      text-align: center;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    /* About Section */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .about-text {
+      opacity: 0;
+      animation: fadeInLeft 0.8s ease-out 0.3s both;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-image {
+      opacity: 0;
+      animation: fadeInRight 0.8s ease-out 0.4s both;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px var(--shadow);
+    }
+
+    /* Projects Section */
+    .projects {
+      background: #fafafa;
+      padding: 6rem 5%;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.4s ease;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out both;
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    .project-card:nth-child(5) { animation-delay: 0.5s; }
+    .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      background: #f0f0f0;
+      position: relative;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .project-content p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .project-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+    }
+
+    .project-link::after {
+      content: '→';
+      transition: transform 0.3s ease;
+    }
+
+    .project-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* Writing Section */
+    .writing-list {
+      display: grid;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .writing-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out both;
+    }
+
+    .writing-item:nth-child(1) { animation-delay: 0.1s; }
+    .writing-item:nth-child(2) { animation-delay: 0.2s; }
+    .writing-item:nth-child(3) { animation-delay: 0.3s; }
+    .writing-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .writing-item:hover {
+      background: #fafafa;
+      transform: translateX(4px);
+    }
+
+    .writing-thumb {
+      width: 100%;
+      height: 140px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .writing-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .writing-content h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .writing-content .date {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .writing-content p {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: linear-gradient(135deg, rgba(212, 165, 116, 0.03) 0%, rgba(255, 255, 255, 1) 100%);
+      padding: 6rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--bg);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 5%;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(30px, -30px) rotate(5deg);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        order: -1;
+      }
+
+      .writing-item {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 4rem 5%;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        padding: 1rem 5%;
+      }
+
+      nav ul {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Andrew Ganni</h1>
+        <p class="tagline">Entrepreneur. Creator. Innovator.</p>
+        <a href="#about" class="btn">Learn More</a>
+      </div>
+      <div class="hero-image">
+        <img src="images/portrait_placeholder.jpg" alt="Andrew Ganni" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <div class="about">
+      <div class="about-text">
+        <p>
+          I'm Andrew Ganni — an entrepreneur, creator, and innovator passionate about building meaningful experiences and bringing ideas to life. With a background spanning technology, design, and business, I thrive at the intersection of creativity and strategy.
+        </p>
+        <p>
+          My work is driven by a belief that great products and experiences come from understanding people, solving real problems, and never settling for the status quo. Whether I'm launching a new venture, designing a user experience, or exploring new technologies, I approach everything with curiosity and a commitment to excellence.
+        </p>
+        <p>
+          When I'm not working, you'll find me exploring new ideas, connecting with fellow creators, and always learning something new. I believe in the power of community, continuous growth, and making a positive impact through what we create.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="images/portrait_about_placeholder.jpg" alt="Andrew Ganni" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/project1_placeholder.jpg" alt="Project 1" />
+        </div>
+        <div class="project-content">
+          <h3>Project One</h3>
+          <p>A modern platform that connects creators with opportunities, built with cutting-edge technology and thoughtful design.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/project2_placeholder.jpg" alt="Project 2" />
+        </div>
+        <div class="project-content">
+          <h3>Project Two</h3>
+          <p>An innovative solution that transforms how people interact with digital experiences, focusing on simplicity and elegance.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/project3_placeholder.jpg" alt="Project 3" />
+        </div>
+        <div class="project-content">
+          <h3>Project Three</h3>
+          <p>A creative venture that combines art, technology, and storytelling to create immersive experiences for audiences.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/project4_placeholder.jpg" alt="Project 4" />
+        </div>
+        <div class="project-content">
+          <h3>Project Four</h3>
+          <p>Building tools and platforms that empower individuals and teams to achieve more, faster, and with greater impact.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/project5_placeholder.jpg" alt="Project 5" />
+        </div>
+        <div class="project-content">
+          <h3>Project Five</h3>
+          <p>A community-driven initiative that brings together like-minded individuals to collaborate, learn, and grow together.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/project6_placeholder.jpg" alt="Project 6" />
+        </div>
+        <div class="project-content">
+          <h3>Project Six</h3>
+          <p>Exploring the future of digital interaction through experimental projects that push boundaries and inspire innovation.</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing Section -->
+  <section id="writing">
+    <h2 class="section-title">Writing</h2>
+    <div class="writing-list">
+      <article class="writing-item">
+        <div class="writing-thumb">
+          <img src="images/blog_thumb1_placeholder.jpg" alt="Blog post thumbnail" />
+        </div>
+        <div class="writing-content">
+          <h3>The Future of Creative Work</h3>
+          <p class="date">March 15, 2025</p>
+          <p>Exploring how technology and creativity are converging to create new opportunities for creators and entrepreneurs in the digital age.</p>
+        </div>
+      </article>
+      <article class="writing-item">
+        <div class="writing-thumb">
+          <img src="images/blog_thumb2_placeholder.jpg" alt="Blog post thumbnail" />
+        </div>
+        <div class="writing-content">
+          <h3>Building Products That Matter</h3>
+          <p class="date">February 28, 2025</p>
+          <p>Lessons learned from building products that solve real problems and create genuine value for users and communities.</p>
+        </div>
+      </article>
+      <article class="writing-item">
+        <div class="writing-thumb">
+          <img src="images/blog_thumb3_placeholder.jpg" alt="Blog post thumbnail" />
+        </div>
+        <div class="writing-content">
+          <h3>Design Thinking in Practice</h3>
+          <p class="date">February 10, 2025</p>
+          <p>A practical guide to applying design thinking principles to everyday challenges, from product development to personal growth.</p>
+        </div>
+      </article>
+      <article class="writing-item">
+        <div class="writing-thumb">
+          <img src="images/blog_thumb4_placeholder.jpg" alt="Blog post thumbnail" />
+        </div>
+        <div class="writing-content">
+          <h3>Lessons from the Startup World</h3>
+          <p class="date">January 22, 2025</p>
+          <p>Reflections on entrepreneurship, innovation, and the journey of building something from the ground up in today's fast-paced world.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-content">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@andrew-ganni.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Andrew Ganni. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements with animations
+    document.querySelectorAll('.section-title, .project-card, .writing-item').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Form submission handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      // Simple mailto fallback (can be replaced with actual form handler)
+      const subject = encodeURIComponent(`Contact from ${name}`);
+      const body = encodeURIComponent(`From: ${email}\n\n${message}`);
+      window.location.href = `mailto:hello@andrew-ganni.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
+
